@@ -28,8 +28,10 @@ public class DownloadResource {
         DownloadService downloadService = new DownloadService();
         
         @GET
-	@Path("/{username}")
-	public void getImage () {
+	@Path("/{imageId}")
+	public Images getImagePath (@PathParam("imageId") String imageId) throws Exception {
+            
+            return downloadService.getImagePath(imageId);
 		//return downloadService.getImage();
 	}
         

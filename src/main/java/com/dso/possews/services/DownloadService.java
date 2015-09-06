@@ -24,7 +24,7 @@ public class DownloadService {
 
         Images image = null;
 
-        String query = "select * from images where image_id = ?";
+        String query = "select * from paths where image_id = ?";
 
         try {
 
