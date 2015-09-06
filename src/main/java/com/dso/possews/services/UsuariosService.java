@@ -24,12 +24,13 @@ public class UsuariosService {
 				 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				usuario = new Usuarios(rs.getString("username"), 
-						               rs.getString("id_grupo"), 
-						               rs.getString("id_tercero"), 
-						               rs.getString("password"), 
-						               rs.getString("estado")
-						              );
+                                usuario = new Usuarios(rs.getString("username"),rs.getString("password"));
+//				usuario = new Usuarios(rs.getString("username"), 
+//						               rs.getString("id_grupo"), 
+//						               rs.getString("id_tercero"), 
+//						               rs.getString("password"), 
+//						               rs.getString("estado")
+//						              );
 			}
 			
 			ps.close();
@@ -56,12 +57,7 @@ public class UsuariosService {
 		
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				lstUsuarios.add(new Usuarios(rs.getString("username"), 
-						                     rs.getString("id_grupo"), 
-						                     rs.getString("id_tercero"), 
-						                     rs.getString("password"), 
-						                     rs.getString("estado")
-						                    ));
+                              lstUsuarios.add(new Usuarios(rs.getString("username"),rs.getString("password")));
 			}
 			
 			ps.close();
@@ -84,10 +80,7 @@ public class UsuariosService {
 			Connection conexion = DbConnection.getConnection();
 			PreparedStatement ps = conexion.prepareStatement(query);
 			ps.setString(1, newUsuario.getUsername());
-			ps.setString(2, newUsuario.getIdGrupo());
-			ps.setString(3, newUsuario.getIdTercero());
 			ps.setString(4, newUsuario.getPassword());
-			ps.setString(5, newUsuario.getEstado());
 		
 			Ok = ps.executeUpdate();
 			try {
